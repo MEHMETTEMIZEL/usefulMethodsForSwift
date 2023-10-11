@@ -26,6 +26,48 @@ import UIKit
             }
         }
 		
+		/// Parametre olarak verilen String degeri, disaridan alinan renk, font size vs. degerlere göre özellestirilmis string olarak döner.
+        /// - Parameters:
+        ///   - text: formatlanacak olan text
+        ///   - isBold: font kalın olup olmaması (default: true)
+        ///   - fontSize: font büyüklüğü (default: standartFontSize )
+        ///   - foreColor: text rengi (default: nil)
+        /// - Returns: parametre olarak verilmiş attributelar ile formatlanmış NSAttributedString tipinde text
+        public static func getAttributedString(text: String, isBold: Bool? = true, fontSize: CGFloat = Constants.BaseConstants.standartFontSize, foreColor: UIColor? = nil) ->NSAttributedString {
+            
+            let attributes = [NSAttributedString.Key.font:getFont(isBold!,fontSize)]
+            
+            let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
+            
+            if foreColor != nil {
+                let colorAttributes : [NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor: foreColor!]
+                attributedText.addAttributes(colorAttributes, range: NSMakeRange(0, attributedText.length))
+            }
+            
+            return attributedText
+        }
+		
+		/// Parametre olarak verilen String degeri, disaridan alinan renk, font size vs. degerlere göre özellestirilmis string olarak döner.
+        /// - Parameters:
+        ///   - text: formatlanacak olan text
+        ///   - weight: regular, medium, bold vs.
+        ///   - fontSize: font büyüklüğü (default: standartFontSize )
+        ///   - foreColor: text rengi (default: nil)
+        /// - Returns: parametre olarak verilmiş attributelar ile formatlanmış NSAttributedString tipinde text
+        public static func getAttributedStringWithWeight(text: String, weight: UIFont.Weight = .regular, fontSize: CGFloat = Constants.BaseConstants.standartFontSize, foreColor: UIColor? = nil) ->NSAttributedString {
+            
+            let attributes = [NSAttributedString.Key.font: UIFont.monospacedDigitSystemFont(ofSize: fontSize, weight: weight)]
+            
+            let attributedText = NSMutableAttributedString(string: text, attributes: attributes)
+            
+            if foreColor != nil {
+                let colorAttributes : [NSAttributedString.Key:Any] = [NSAttributedString.Key.foregroundColor: foreColor!]
+                attributedText.addAttributes(colorAttributes, range: NSMakeRange(0, attributedText.length))
+            }
+            
+            return attributedText
+        }
+		
         /// Paramatrede gelen String degeri; hizalama, kalin olabilme, renkli olabilme ve yazi büyüklügü niteliklerini katarak özellestirilmis string olarak döner.
         /// - Parameters:
         ///   - text: formatlanacak text
