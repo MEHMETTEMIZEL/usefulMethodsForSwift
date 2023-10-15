@@ -37,7 +37,34 @@ extension Utils {
         public static func doubleFromNilableDouble(_ value: Double?) -> Double {
             return Double(value ?? 0)
         }
-		
+	
+		/// Double olan değeri Float'a çevirir.
+        /// - Parameter value: double tipinde tutar
+        /// - Returns: floata çevrilmiş tutar
+        public static func getFloatFromDouble( _ value: Double?) -> Float {
+            
+            guard let value = value else {
+                return 0.00
+            }
+
+            return Float(value)
+        }
+        
+        /// string değeri dönüştürebiliyorsa double halini cevirir, dönüşemiyecek bir değer ise 0 döndürür ( "1.234,20" -> 1234.2 )
+        /// - Parameter value: string tipinde amount (ör: "1.234,20")
+        /// - Returns: double tipinde tutar (ör: 1234.2)
+        public static func amountfromString( _ value: String?) -> Double {
+
+            if let value = value {
+                var str = value.replacingOccurrences(of: Constants.BaseConstants.groupingSeparator, with: "")
+                str = str.replacingOccurrences(of: Constants.BaseConstants.decimalSeparator, with: Constants.BaseConstants.groupingSeparator)
+                if let dvalue = Double(str) {
+                    return dvalue
+                }
+            }
+            
+            return 0
+        }
 		        
         /// double değeri birimiyle birlikte standart font ayarlarında döndürür
         /// - Parameters:
