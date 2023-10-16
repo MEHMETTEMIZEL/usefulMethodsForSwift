@@ -121,7 +121,25 @@ extension Utils {
             else {
                 return NSAttributedString(string: "")
             }
-        } 
+        }
+        
+        /// Paramatre verilen String degerden para birimini kaldirarak döndürür.
+        /// - Parameter string: tutar
+        /// - Returns: içerisinden para birimi ayrılmış tutat
+        public static func removeFECCode(from string: String) -> String {
+            let arr: [Any] = string.components(separatedBy: " ")
+            let mText: String = arr[0] as! String
+            
+            return mText.replacingOccurrences(of: Constants.BaseConstants.decimalSeparator, with: Constants.BaseConstants.groupingSeparator)
+        }
+        
+        /// Parametre olarak verilen string tutarından para birimi gibi ekstra bilgileri kaldırır.
+        /// - Parameter amountStringWithFec: para birmi ile tutar (ör: "123,45 ALT (gr)")
+        /// - Returns: para birimi olmadan tutar (ör: 123.45)
+        public static func getAmountFromStringWithFec(_ amountStringWithFec: String?) -> Double {
+            
+            return amountfromString(amountStringWithFec?.components(separatedBy: " ").first)
+        }		
     }
 }
 
