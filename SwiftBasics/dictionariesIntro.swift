@@ -12,3 +12,30 @@ print(blacksmithShop)
 let allKeys = [String](blacksmithShop.keys)
 
 let allValues = [Int](blacksmithShop.values)
+
+
+
+//-----------------------
+// Caching and overwriting items
+var playerStats: [String: Int] = ["HP": 100, "Attack": 35, "Gold": 29]
+var oldValue = playerStats.updateValue(30, forKey: "Attack")
+
+// Caching and removing items
+//playerStats["Gold"] = nil
+var removedValue = playerStats.removeValue(forKey: "Gold")
+
+print(playerStats)
+
+//Nested dictionaries
+var questBoard = [
+	"Fetch Gemstones": [
+		"Objective": "Retrieve 5 gemstones",
+		"Secret": "Complete in under 5 minutes"
+	],
+	"Defeat Big Boss": [
+		"Objective": "Beat the boss",
+		"Secret": "Win with 50% health"
+	]
+]
+
+var gemstoneObjective = questBoard["Fetch Gemstones"]?["Objective"]
