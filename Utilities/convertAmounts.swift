@@ -140,6 +140,29 @@ extension Utils {
             
             return amountfromString(amountStringWithFec?.components(separatedBy: " ").first)
         }		
+				
+        /// Parametre olarak verilen string tipindeki tutarı, yine parametre olarak verilen attributelara göre formatlanmış olarak döndürür.
+        /// - Parameters:
+        ///   - amount: string tipinde tutar
+        ///   - fecCode: para birimi
+        ///   - amountFontSize: tutar font büyüklüğü (default: 17.0)
+        ///   - decimalFontSize: ondalık kısım font büyüklüğü (default: 12.0)
+        ///   - format: text format tipi (default: n2)
+        ///   - textColor: text font rengi
+        ///   - isBold: textin kalın font olup olmaması (default: true)
+        ///   - plusMinusSymbol: +/- sembolü (default: "")
+        /// - Returns: verilen tutarın parametrelerde belirtilen attributelar ile formatlanmış hali
+        public static func convertAmountWithSmallDecimal(amount: String?, fecCode: String?, amountFontSize: CGFloat = 17.0, decimalFontSize: CGFloat = 12.0, format: TextFormatType = .n2, textColor: UIColor, isBold: Bool = true, plusMinusSymbol: String = "") -> NSAttributedString {
+            
+            guard let amount = amount?.components(separatedBy: " ").first else { return NSAttributedString() }
+            
+            return convertAmountWithSmallDecimal(
+                amount: Utils.AmountUtils.amountfromString(amount),
+                fecCode: fecCode ?? amount.components(separatedBy: " ")[safe: 1],
+                amountFontSize: amountFontSize, decimalFontSize: decimalFontSize, format: format,
+                textColor: textColor, isBold: isBold, plusMinusSymbol: plusMinusSymbol
+            )
+        }
     }
 }
 
