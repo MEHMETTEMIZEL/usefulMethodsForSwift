@@ -39,3 +39,23 @@ var questBoard = [
 ]
 
 var gemstoneObjective = questBoard["Fetch Gemstones"]?["Objective"]
+
+
+// Optional binding
+if let item = itemGathered {
+	print("You found an \(item)")
+} else {
+	print("Sorry, no item found")
+}
+
+if let shopOpen ) isShopOpen, let searchedItem = blacksmithShop["Shield"] {
+	print("We're open \(shopOpen) and we have a \(searchedItem) in stock!")
+} else {
+	print("Sorry, either we're not open or don't have your item...")
+}
+
+if let fetchGems = questDirectory["Fetch Gemstones"]?["Objective"] {
+	print("Active quest object: \(fetchGems)")
+} else {
+	print("That quest is no longer available")
+}
