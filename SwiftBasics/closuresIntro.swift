@@ -47,3 +47,24 @@ func activeMembers(members: [String]) -> () -> Void {
 
 var closureReturn = activeMembers(members: partyMembers)
 closureReturn()
+
+
+
+// Type Alias
+typealias AttackTuple = (name: String, damage: Int, rechargable: Bool)
+
+var sunStrike: AttackTuple = ("Sun Strike", 45, false)
+
+func levelUpAttack(baseAttack: AttackTuple) -> AttackTuple {
+	let increasedAttack: AttackTuple = (baseAttack.name, baseAttack.damage + 10, true)
+	return increasedAttack
+}
+
+var poweredAttack = levelUpAttack(baseAttack: sunStrike)
+
+//TypeAlias as a function parameter
+typealias ArrayClosure = ([String]) -> Void
+
+func activeMembersCopy(completion: ArrayClosure) {
+	completion(partyMembers)
+}
