@@ -31,3 +31,26 @@ player1.name = "Ali"
 print(defultPlayer.name)
 player1.printStats()
 player2.printStats()
+
+
+// Subclass
+class Ranger: Adventurer {
+	var classAdvantage: String
+	
+	ovverride class var credo: String {
+		return "To the King!"
+	}
+	
+	init(name: String, advantage: String) {
+		self.classAdvantage = advantage
+		super.init(name: name, maxHP: 150)
+	}
+	
+	override func printStats() {
+		print("\(self.name): Ranger, Advantage: \(self.classAdvantage)")
+	}
+}
+
+var aragorn = Ranger(name: "Aragorn", advantage: "Stealth")
+aragorn.printStats()
+
