@@ -64,3 +64,19 @@ func setupDefaultMatch(levelName: String = "Fire Marshes", opponents: Int = 3) {
 
 setupDefaultMatch()
 setupDefaultMatch(levelName: "Poison Flats", opponents: 10)
+
+
+// Function Types
+func computeBonusDamage(baseDamage: Int) -> Int {
+	return baseDamage * 5
+}
+
+// (Int) -> Int
+
+// Functions as parameters
+func dealDamage(baseDamage: Int, bonusDamage: (Int) -> Int) {
+	let bonus = bonusDamage(baseDamage)
+	print("Base Damage: \(baseDamage)\nBonus Damage: \( bonus)")
+}
+
+dealDamage(baseDamage:77, bonusDamage: computeBonusDamage)
