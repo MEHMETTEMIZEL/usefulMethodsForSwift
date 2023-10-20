@@ -7,6 +7,21 @@ protocol Collactable {
 	func collect() -> Bool
 }
 
+extension Collactable {
+	var priceIncrease: Int {
+		return self.price * 10
+	}
+	
+	init(name: String) {
+		self.init(withName: name, startingPrice: 100)
+	
+	
+	func collect() -> Bool {
+		print("Default item couldn't be collected...")
+		return false
+	}
+}
+
 protocol Usable {
 	func use()
 }
@@ -21,10 +36,10 @@ class Item: Collactable, Usable {
 		self.price = startingPrice
 	}
 	
-	func collect() -> Bool {
-		print("Item collected!")
-		return true
-	}
+//	func collect() -> Bool {
+//		print("Item collected!")
+//		return true
+//	}
 	
 	func use() {
 		print("Item used!")
@@ -36,3 +51,13 @@ potion.collect()
 potion.use()
 
 
+let antidote = Item(name: "Antidote")
+antidote.price
+
+extension String {
+	func fancyDebug() {
+		print("This string has \(self.count) characters")
+	}
+}
+
+antidote.name.fancyDebug()
