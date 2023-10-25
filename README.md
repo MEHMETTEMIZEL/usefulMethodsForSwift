@@ -1,2 +1,3 @@
-# usefulMethodsForSwift
-If you need some common jobs you can use these methods.
+# usefulMethodsForSwift 
+Swift basic usages. 
+I'll continue to update this repository while I write new methods.
